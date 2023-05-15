@@ -11,14 +11,15 @@ export default function AddGuest() {
 
   const [guests, setGuests] = useState([]); // Store here the values of firstName and lastName
   const [disabledInputs, setDisabledInputs] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // State variable is set to guest is not attending by default
-
+  // Fetch data and set reponse to guests state.
   useEffect(() => {
     const fetchGuests = async () => {
       const data = await fetch(`${baseUrl}/guests`);
       const guestsData = await data.json();
       setGuests(guestsData);
+      setIsLoading(false);
       setDisabledInputs(false);
     };
 
@@ -37,6 +38,8 @@ export default function AddGuest() {
       body: JSON.stringify({ firstName: firstNameArg, lastName: lastNameArg }),
     });
 
+    // wrap in try...catch . If network call failed just log the error to console,
+    // if succeded update guests state.
     try {
       const data = await response.json();
       setGuests((prevState) => {
@@ -57,6 +60,7 @@ export default function AddGuest() {
     setLastName('');
   };
 
+  // network call to delete guests and update guest state
   const deleteGuest = async (guest) => {
     try {
       await fetch(`${baseUrl}/guests/${guest.id}`, {
@@ -128,7 +132,7 @@ export default function AddGuest() {
         </div>
         <div>
           <h2>Guest List</h2>
-          {guests.length > 0 ? (
+          {!isLoading ? (
             guests.map((g) => (
               <div
                 key={`guest_${g.id}`}
@@ -156,16 +160,3 @@ export default function AddGuest() {
     </div>
   );
 }
-
-//  onClick={() => {
-//         // 1. create a copy
-//         const newPeople = [...users];
-
-//         // 2. update the value
-//         newPeople.length = newPeople.length - 1;
-
-//         // 3. set new state
-//         setUsers(newPeople);
-//       }}
-//     >
-//       Delete the last user
