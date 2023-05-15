@@ -80,7 +80,7 @@ export default function AddGuest() {
       <header>
         <h1>Guest List Manager</h1>
       </header>
-      <div data-test-id="guest">
+      <div>
         <h2>Add Guests</h2>
         <div>
           <form>
