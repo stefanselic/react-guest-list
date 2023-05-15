@@ -31,7 +31,7 @@ export default function Guest(props) {
           Guest {isAttending ? 'is attending ✅' : 'is not attending ❌'}
           <input
             style={{ display: 'none' }}
-            aria-label={`${props.guest.firstName} ${props.guest.lastName} attenging status`}
+            aria-label={`${props.guest.firstName} ${props.guest.lastName} attending status`}
             id="checkbox"
             type="checkbox"
             onChange={() => setIsAttending(!isAttending)}
