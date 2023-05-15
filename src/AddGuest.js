@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import GuestAttending from './GuestAttendingCheckBoxComponent';
+import GuestAttending from './GuestAttendingCheckBoxComponent';
 
-export default function Forms() {
+export default function AddGuest() {
   const [firstName, setFirstName] = useState(''); // Value of firstName input is stored here
 
   const [lastName, setLastName] = useState(''); // Value of LastName input is stored here
@@ -10,11 +11,9 @@ export default function Forms() {
 
   const [isAttending, setIsAttending] = useState(false); // State variable is set to guest is not attending by default
 
-  // console.log(guest);
-
   // Create a function that displays guest firstName and lastName and adds a delete button and a checkbox that says guest is attending or not
-  function addGuest(e) {
-    setGuest(`${firstName} + ${lastName}`);
+  function addGuest(firstName, lastName) {
+    return { firstName };
   }
   console.log(firstName, lastName);
 
@@ -34,18 +33,24 @@ export default function Forms() {
             <label>
               First name
               <input
+                placeholder="First name*"
                 value={firstName}
                 onChange={(e) => setFirstName(e.currentTarget.value)}
-                placeholder="First name*"
               />
             </label>
             <label>
               Last name
               <input
-                onKeyDown={addGuest}
+                placeholder="Last name*"
                 value={lastName}
                 onChange={(e) => setLastName(e.currentTarget.value)}
-                placeholder="Last name*"
+                onKeyDown={() => {
+                  // e.preventDefault();
+                  setGuest([
+                    ...guest,
+                    { firstName: firstName, lastName: lastName },
+                  ]);
+                }}
               />
             </label>
           </form>
@@ -54,8 +59,13 @@ export default function Forms() {
         <br />
         <div>
           <button
-            onSubmit={(e) => {
-              e.preventDefault();
+            onClick={() => {
+              // e.preventDefault();
+              setGuest([
+                ...guest,
+                { firstName: firstName, lastName: lastName },
+              ]);
+              console.log(guest);
             }}
           >
             Add Guest
@@ -64,9 +74,14 @@ export default function Forms() {
         <div>
           <h2>Guest List</h2>
           <div>
-            First Name: {firstName}
-            <br />
-            Last Name: {lastName}
+            {guest.map((g) => {
+              return (
+                <div>
+                  {g.firstName} {g.lastName}
+                  <GuestAttending />
+                </div>
+              );
+            })}
           </div>
         </div>
         <br />
