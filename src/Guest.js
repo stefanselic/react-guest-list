@@ -30,7 +30,7 @@ export default function Guest(props) {
         <button onClick={() => toggleLight()} style={{ fontSize: '16px' }}>
           Guest {isAttending ? 'is attending ✅' : 'is not attending ❌'}
           <input
-            style={{ display: 'none' }}
+            // style={{ display: 'none' }}
             aria-label={`${props.guest.firstName} ${props.guest.lastName} attending status`}
             id="checkbox"
             type="checkbox"
