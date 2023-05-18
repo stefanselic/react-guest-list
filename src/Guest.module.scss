@@ -1,0 +1,41 @@
+* {
+  font-family: 'Times New Roman', Times, serif;
+}
+.guestList {
+  display: flex;
+  display: border-box;
+  margin-top: 16px;
+  gap: 32px;
+  width: 600px;
+}
+
+.guestFullName span {
+  padding-right: 16px;
+  text-decoration: underline;
+}
+.guestFullName {
+  margin: auto;
+  padding: 16px;
+  width: 512px;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: #323732;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.attendingButton {
+  width: 400px;
+  background-color: #323732;
+  color: white;
+  padding: 14px 30px;
+  margin: auto;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.attendingButton:hover {
+  background-color: #494848;
+}
