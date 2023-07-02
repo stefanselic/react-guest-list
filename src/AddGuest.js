@@ -89,7 +89,7 @@ export default function AddGuest() {
         <h2>GUEST Information</h2>
         <form>
           <label>
-            <span>First name</span>
+            First name
             <input
               className={styles.firstName}
               disabled={disabledInputs}
