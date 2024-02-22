@@ -1,3 +1,8 @@
+<h1>REACT GUEST LIST MANAGER</h1>
+
+![Bildschirmfoto 2024-02-22 um 10 00 34](https://github.com/stefanselic/react-guest-list/assets/129748801/0af87f05-8926-41ab-9c67-4be12a8e9f08)
+
+
 # Create a guest list app using React that allows for:
 
 - [ ] Adding a guest using separate first name and last name fields
